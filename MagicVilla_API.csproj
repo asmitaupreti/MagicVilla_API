@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>553c64f7-336f-4204-8dc8-c6ff6f93f892</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
@@ -11,16 +12,20 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="7.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Models\" />
     <None Remove="Dto\" />
     <None Remove="Data\" />
+    <None Remove="Logging\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Dto\" />
     <Folder Include="Data\" />
+    <Folder Include="Logging\" />
   </ItemGroup>
 </Project>
