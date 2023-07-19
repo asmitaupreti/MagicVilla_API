@@ -11,16 +11,6 @@ using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//------Add Serilog to the application(First install nugget package serilog
-//   and to write log in file serilog sink files) )-------.
-
-//Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().
-//    WriteTo.File("log/villaLogs.txt", rollingInterval: RollingInterval.Day).CreateLogger();
-
-//builder.Host.UseSerilog();
-
-// ------Add Serilog to the application------.
-
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
@@ -64,7 +54,8 @@ builder.Services.AddAuthentication(x =>
  }); ;
 
 builder.Services.AddControllers().AddNewtonsoftJson();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => {
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
