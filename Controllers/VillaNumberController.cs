@@ -14,8 +14,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MagicVilla_API.Controllers
 {
-    [Route("api/VillaNumberAPI")]
+    [Route("api/v{version:apiVersion}/VillaNumberAPI")]
     [ApiController]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     public class VillaNumberController : ControllerBase
     {
        

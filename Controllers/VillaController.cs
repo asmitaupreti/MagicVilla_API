@@ -18,8 +18,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace MagicVilla_API.Controllers
 {
-    [Route("api/villaAPI")]
+    [Route("api/v{version:apiVersion}/villaAPI")]
     [ApiController]
+    [ApiVersion("1.0")]
     public class VillaController : ControllerBase
     {
         protected APIResponse _response;
