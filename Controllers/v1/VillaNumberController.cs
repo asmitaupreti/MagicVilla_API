@@ -35,12 +35,7 @@ namespace MagicVilla_API.Controllers.v1
         }
 
 
-        [HttpGet("GetString")]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "string1", "string2" };
-        }
-
+       
         [HttpGet]
         [ProducesResponseType(200)]
         public async Task<ActionResult<APIResponse>> GetVillaNumbers()

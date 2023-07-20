@@ -36,16 +36,25 @@ namespace MagicVilla_API.Controllers.v1
         }
 
         [HttpGet]
+        [ResponseCache(CacheProfileName = "Default30")]
         [Authorize]
         [ProducesResponseType(200)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<APIResponse>> GetVillas()
+        public async Task<ActionResult<APIResponse>> GetVillas([FromQuery(Name ="filterOccupancy")]int? occupancy)
         {
             try
             {
-                IEnumerable<Villa> villList = await _dbVilla.GetAllAsync();
+                IEnumerable<Villa> villList;
 
+                if(occupancy > 0)
+                {
+                    villList = await _dbVilla.GetAllAsync(u => u.Occupancy == occupancy);
+                }
+                else
+                {
+                    villList = await _dbVilla.GetAllAsync();
+                }
                 _response.Result = _mapper.Map<List<VillaDTO>>(villList);
                 _response.StatusCode = HttpStatusCode.OK;
                 
@@ -63,6 +72,7 @@ namespace MagicVilla_API.Controllers.v1
 
         [HttpGet("{id:int}", Name ="GetVilla")]
         [Authorize(Roles ="admin")]
+        [ResponseCache(Duration = 30)]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
